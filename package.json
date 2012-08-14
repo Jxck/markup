@@ -1,0 +1,16 @@
+{
+  "name": "markup",
+  "version": "0.0.0",
+  "description": "realtime rendering markdown using github api",
+  "main": "index.js",
+  "dependencies": {
+    "connect": "~2.4.2",
+    "socket.io": "~0.9.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jxck",
+  "license": "BSD"
+}
