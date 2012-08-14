@@ -1,12 +1,12 @@
 var https = require('https')
   , http = require('http')
   , fs = require('fs')
-  , url = require('url')
-  ;
+  , url = require('url');
+
 
 var connect = require('connect')
-  , io = require('socket.io')
-  ;
+  , io = require('socket.io');
+
 
 var server = connect()
   .use(connect.static(__dirname))
@@ -14,7 +14,7 @@ var server = connect()
 
 io = io.listen(server);
 
-io.configure('development', function () {
+io.configure('development', function() {
   io.set('log level', 1);
   io.set('transports', ['websocket']);
 });
@@ -43,10 +43,10 @@ function request(str, cb) {
   var req = https.request(options, function(res) {
     var response = [];
     res.setEncoding('utf8');
-    res.on('data', function (chunk) {
+    res.on('data', function(chunk) {
       response.push(chunk);
     });
-    res.on('end', function () {
+    res.on('end', function() {
       cb(null, response.join());
     });
   });
@@ -66,7 +66,7 @@ function read(path, cb) {
 }
 
 function watch(path, cb) {
-  fs.watchFile(path, {interval: 10}, function (curr, prev) {
+  fs.watchFile(path, {interval: 10}, function(curr, prev) {
     read(path, cb);
   });
 }
