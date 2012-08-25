@@ -26,9 +26,11 @@ io.configure('development', function() {
 });
 
 io.sockets.on('connection', function(socket) {
+  // read at the first access
   read(target, function(err, data) {
     socket.emit('md', data);
   });
+  // watch the change of file
   change(target, function(err, data) {
     socket.emit('md', data);
   });
@@ -70,13 +72,9 @@ function read(path, cb) {
   });
 }
 
-function watch(path, cb) {
-  fs.watchFile(path, {interval: 10}, function(curr, prev) {
+function change(path, cb) {
+  fs.watchFile(path, { interval: 10 }, function(curr, prev) {
     read(path, cb);
   });
-}
-
-function change(path, cb) {
-  watch(path, cb);
 }
 
