@@ -3,6 +3,11 @@
 Realtime Markdown Viewer with rendering by [Github Markdown Rendering API](http://developer.github.com/v3/markdown/)
 API limit is 5000 render/h, it is enough for almost of all usecase.
 
+## image
+
+![image](https://github.com/Jxck/markup/raw/master/image.png)
+
+
 ## How to use
 
 ```shell
