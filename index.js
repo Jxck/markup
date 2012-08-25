@@ -11,7 +11,7 @@ var connect = require('connect')
   , io = require('socket.io');
 
 // options
-var target = process.argv[2] || 'readme.md'
+var target = process.argv[2]
   , port = process.argv[3] || 3000
 
 var server = connect()
