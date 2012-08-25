@@ -37,6 +37,8 @@ io.sockets.on('connection', function(socket) {
 });
 
 function request(str, cb) {
+  if(!str)
+    return;
   var options = {
     host: 'api.github.com',
     path: '/markdown/raw',
