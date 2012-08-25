@@ -1,6 +1,6 @@
 {
   "name": "markup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "realtime rendering markdown using github api",
   "repository": { "type": "git", "url": "git://github.com/Jxck/markup.git" },
   "main": "index.js",
