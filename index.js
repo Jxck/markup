@@ -68,6 +68,8 @@ function request(str, cb) {
 
 function read(path, cb) {
   fs.readFile(path, function(err, data) {
+    if(err) throw err;
+    if(data.length === '') return;
     request(data, cb);
   });
 }
