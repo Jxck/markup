@@ -1,17 +1,22 @@
 #! /usr/bin/env node
+
+// standard modules
 var https = require('https')
   , http = require('http')
   , fs = require('fs')
   , url = require('url');
 
-
+// third party modules
 var connect = require('connect')
   , io = require('socket.io');
 
+// options
+var target = process.argv[2] || 'readme.md'
+  , port = process.argv[3] || 3000
 
 var server = connect()
   .use(connect.static(__dirname))
-  .listen(3000);
+  .listen(port);
 
 io = io.listen(server);
 
@@ -21,7 +26,6 @@ io.configure('development', function() {
 });
 
 io.sockets.on('connection', function(socket) {
-  var target = process.argv[2] || 'readme.md';
   read(target, function(err, data) {
     socket.emit('md', data);
   });
