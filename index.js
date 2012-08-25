@@ -8,13 +8,15 @@ var https = require('https')
 
 // third party modules
 var connect = require('connect')
-  , io = require('socket.io');
+  , io = require('socket.io')
+  ;
 
 // options
 var target = process.argv[2]
   , port = process.argv[3] || 3000
+  ;
 
-if(target === '-v') {
+if (target === '-v') {
   var v = require('./package').version;
   console.log(v);
   return;
@@ -74,8 +76,8 @@ function request(str, cb) {
 
 function read(path, cb) {
   fs.readFile(path, function(err, data) {
-    if(err) throw err;
-    if(data.length === '') return;
+    if (err) throw err;
+    if (data.length === '') return;
     request(data, cb);
   });
 }
