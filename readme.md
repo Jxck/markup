@@ -20,15 +20,6 @@ open (http://localhost:port/) on your browser,
 and write your markdown file with [gfm](http://github.github.com/github-flavored-markdown/)
 
 
-## watch file or polling ?
-
-markup reads the target file per 10 msec.
-this looks very inefficient.
-but in some distribution, fs.watchFile are too late from
-time you saved your file.
-
-so, I don't use fs.watchFile.
-
 ## Special Thanks
 
 <3 Github
