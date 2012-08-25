@@ -14,6 +14,12 @@ var connect = require('connect')
 var target = process.argv[2]
   , port = process.argv[3] || 3000
 
+if(target === '-v') {
+  var v = require('./package').version;
+  console.log(v);
+  return;
+}
+
 var server = connect()
   .use(connect.static(__dirname))
   .listen(port);
