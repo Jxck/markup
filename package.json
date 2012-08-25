@@ -1,6 +1,6 @@
 {
   "name": "markup",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "realtime rendering markdown using github api",
   "main": "index.js",
   "bin": {
