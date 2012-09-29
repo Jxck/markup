@@ -4,7 +4,8 @@
 var https = require('https')
   , http = require('http')
   , fs = require('fs')
-  , url = require('url');
+  , url = require('url')
+  ;
 
 // third party modules
 var connect = require('connect')
@@ -23,8 +24,8 @@ if (target === '-v') {
 }
 
 var server = connect()
-  .use(connect.static(__dirname))
-  .listen(port);
+   .use(connect.static(__dirname))
+   .listen(port);
 
 io = io.listen(server);
 
@@ -87,4 +88,3 @@ function change(path, cb) {
     read(path, cb);
   });
 }
-
