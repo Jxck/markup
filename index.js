@@ -52,7 +52,8 @@ function request(str, cb) {
     method: 'POST',
     headers: {
       'Content-length': str.length,
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/plain',
+      'User-Agent': 'markup: markdown renderer (https://github.com/Jxck/markup)'
     }
   };
 
