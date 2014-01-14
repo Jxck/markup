@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="markup">
+  <head>
+    <script src="http://code.angularjs.org/1.2.0/angular.js"></script>
+    <script type="text/javascript">
+
+      angular.module('websocket', [])
+        .factory('socket', function($rootScope) {
+            var ws = new WebSocket("ws://localhost:3000/echo");
+            var rendered = "aaa";
+
+            function on(callback) {
+              ws.onmessage = function() {
+                var args = arguments;
+                $rootScope.$apply(function() {
+                  callback.apply(ws, args);
+                });
+              }
+            }
+
+            function send(message) {
+              ws.send(message);
+            }
+
+            return {
+              send: send,
+              on: on,
+              rendered: rendered
+            }
+        });
+
+
+      angular.module('markup', ['websocket'])
+      .controller('MarkUpController',
+          ['socket', function(socket) {
+            this.rendered = socket.rendered;
+
+            socket.on(function(message) {
+              console.log(message.data);
+              this.rendered = message.data;
+            }.bind(this));
+
+            this.render = function() {
+              socket.send("<a href="a">hoge</a>");
+            }
+        }]);
+
+    </script>
+  </head>
+  <body>
+    <div ng-controller="MarkUpController as mu">
+      <h2>MarkUp</h2>
+      <div>
+        <button ng-click="mu.render()">render</button>
+      </div>
+      <div ng-bind="mu.rendered"></div>
+    </div>
+  </body>
+</html>
