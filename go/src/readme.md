@@ -21,3 +21,12 @@ TCPは、「正確、確実にデータを届ける」ことを重視した設�
 ![3 Way Handshake](https://cacoo.com/diagrams/0bnHpQSj05mRkpdz-BCDBB.png)
 
 
+```go
+import (
+  "hoge"
+)
+
+func hoge() {
+  log.Println("hoge")
+}
+```

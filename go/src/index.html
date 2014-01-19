@@ -1,13 +1,13 @@
 <!doctype html>
 <html ng-app="markup">
   <head>
-    <script src="http://code.angularjs.org/1.2.0/angular.js"></script>
+    <script src="http://code.angularjs.org/1.2.9/angular.js"></script>
+    <script src="http://code.angularjs.org/1.2.9/angular-sanitize.min.js"></script>
     <script type="text/javascript">
 
       angular.module('websocket', [])
         .factory('socket', function($rootScope) {
-            var ws = new WebSocket("ws://localhost:3000/echo");
-            var rendered = "";
+            var ws = new WebSocket("ws://localhost:3000/render");
 
             function on(callback) {
               ws.onmessage = function() {
@@ -25,19 +25,19 @@
             return {
               send: send,
               on: on,
-              rendered: rendered
+              rendered: ""
             }
         });
 
 
       angular.module('markup', ['websocket'])
       .controller('MarkUpController',
-          ['socket', function(socket) {
+          ['socket', function(socket, $sce) {
             this.rendered = socket.rendered;
 
             socket.on(function(message) {
               console.log(message.data);
-              this.rendered = message.data;
+              this.rendered = $sce.trustAsHtml(message.data);
             }.bind(this));
 
             this.render = function() {
@@ -53,7 +53,7 @@
       <div>
         <button ng-click="mu.render()">render</button>
       </div>
-      <div ng-bind="mu.rendered"></div>
+      <div ng-bind-html="mu.rendered"></div>
     </div>
   </body>
 </html>
