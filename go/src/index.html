@@ -7,7 +7,7 @@
       angular.module('websocket', [])
         .factory('socket', function($rootScope) {
             var ws = new WebSocket("ws://localhost:3000/echo");
-            var rendered = "aaa";
+            var rendered = "";
 
             function on(callback) {
               ws.onmessage = function() {
@@ -41,7 +41,7 @@
             }.bind(this));
 
             this.render = function() {
-              socket.send("<a href="a">hoge</a>");
+              socket.send('** aa');
             }
         }]);
 
