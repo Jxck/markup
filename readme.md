@@ -12,7 +12,7 @@ API limit is 5000 render/h, it is enough for almost of all usecase.
 
 ```shell
 $ npm install markup -g
-$ makrup [path/to/file] [port]
+$ markup [path/to/file] [port]
 ```
 
 default port is 3000
